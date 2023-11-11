@@ -39,6 +39,7 @@ class MenuHandler(val menus: String) {
             ConstString.CHRISTMASPASTA -> menu = Menu.ChristmasPasta
             ConstString.CHOCOCAKE -> menu = Menu.ChocoCake
             ConstString.ICECREAM -> menu = Menu.IceCream
+            ConstString.ZEROCOLA-> menu = Menu.ZeroCola
             ConstString.REDWINE -> menu = Menu.RedWine
             ConstString.CHAMPAGNE -> menu = Menu.Champagne
         }

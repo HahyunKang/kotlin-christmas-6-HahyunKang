@@ -17,4 +17,13 @@ object ConstString {
     const val ZEROCOLA = "제로콜라"
     const val REDWINE ="레드와인"
     const val CHAMPAGNE = "샴페인"
+
+}
+
+object CONSTNUM {
+    const val CHRISTMASEVENTDEFAULT = 1000
+    const val DOWDISCOUNT = 2023
+    const val CHRISTMAS = 25
+    const val SPECIALEVENTDEFAULT = 1000
+
 }

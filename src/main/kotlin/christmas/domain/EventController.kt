@@ -5,11 +5,13 @@ class EventController {
     private var date = 0
     private var menu = ""
     private var orderMenus = listOf<MenuResult>()
+    private var orderedPrice = 0
 
 
     init {
         orderMenu()
         handleMenu()
+        calculatePrice()
     }
 
 
@@ -25,6 +27,12 @@ class EventController {
         orderMenus.forEach {
             println("${it.menu} ${it.orderCount}")
         }
+    }
+
+    fun calculatePrice(){
+        val priceCalculator = PriceCalculator(orderMenus)
+        orderedPrice = priceCalculator.getOrderedPrice()
+        println(orderedPrice)
     }
 
 
