@@ -1,5 +1,7 @@
 package christmas
 
+import christmas.domain.EventController
+
 fun main() {
-    TODO("프로그램 구현")
+    val eventController = EventController()
 }
