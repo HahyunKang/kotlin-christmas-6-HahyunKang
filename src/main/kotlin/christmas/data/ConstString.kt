@@ -25,5 +25,7 @@ object CONSTNUM {
     const val DOWDISCOUNT = 2023
     const val CHRISTMAS = 25
     const val SPECIALEVENTDEFAULT = 1000
+    const val GIFTEVENTCRITERIA = 120000
+    const val CHAMPAGNEPRICE = 25000
 
 }

@@ -25,6 +25,9 @@ class CheckEvent(val date: Int) {
         return specialDays.contains(date)
     }
 
+    fun checkGiftEvent(totalPrice:Int) : Boolean{
+        return totalPrice >= CONSTNUM.GIFTEVENTCRITERIA
+    }
 
 
 
