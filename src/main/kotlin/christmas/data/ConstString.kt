@@ -18,6 +18,12 @@ object ConstString {
     const val REDWINE ="레드와인"
     const val CHAMPAGNE = "샴페인"
 
+    const val CHRISTMASDISCOUNT= "크리스마스 디데이 할인"
+    const val WEEKDAYSDISCOUNT = "평일 할인"
+    const val WEEKENDDISCOUNT ="주말 할인"
+    const val SPECIALDISCOUNT= "특별 할인"
+    const val GIFTDISCOUNT= "증정 이벤트"
+
 }
 
 object CONSTNUM {
@@ -27,5 +33,18 @@ object CONSTNUM {
     const val SPECIALEVENTDEFAULT = 1000
     const val GIFTEVENTCRITERIA = 120000
     const val CHAMPAGNEPRICE = 25000
+    const val STARTBADGECRITERIA = 5000
+    const val TREEBADGECRITERIA = 10000
+    const val SANTABADGECRITERIA = 20000
+}
 
+object OUTPUTSTRING {
+    const val BENEFITPREVIEW = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!"
+    const val ORDEREDMENU = "<주문 메뉴>"
+    const val TOTALPRICE = "<할인 전 총주문 금액>"
+    const val GIFTMENU = "<증정 메뉴>"
+    const val BENEFITLIST = "<혜택 내역>"
+    const val TOTALBENEFIT = "<총혜택 금액>"
+    const val PRICEAFTERDISCOUNT = "<할인 후 예상 결제 금액>"
+    const val EVENTBADGE = "<12월 이벤트 배지>"
 }

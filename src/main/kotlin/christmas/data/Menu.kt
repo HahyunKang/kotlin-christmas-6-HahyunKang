@@ -20,8 +20,6 @@ enum class Menu(val menuName: String,val price: Int, val category: Category){
     }
 
 
-
-
 }
 
 enum class Category {

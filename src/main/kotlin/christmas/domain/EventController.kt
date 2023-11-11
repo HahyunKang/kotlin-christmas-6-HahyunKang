@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.data.EventResult
+
 class EventController {
 
     private var date = 0
@@ -7,6 +9,7 @@ class EventController {
     private var orderMenus = listOf<MenuResult>()
     private var totalPrice = 0
     private var finalDiscount = 0
+    private var eventResult = EventResult()
 
 
 
@@ -15,6 +18,7 @@ class EventController {
         handleMenu()
         calculatePrice()
         handleEvent()
+        getBadge()
     }
 
 
@@ -28,7 +32,7 @@ class EventController {
         val menuHandler = MenuHandler(menu)
         orderMenus = menuHandler.getOrderMenus()
         orderMenus.forEach {
-            println("${it.menu} ${it.orderCount}")
+            println("${it.menu.menuName} ${it.orderCount}")
         }
     }
 
@@ -42,9 +46,26 @@ class EventController {
     fun handleEvent(){
         val eventHandler = EventHandler(date,orderMenus,totalPrice)
         finalDiscount = eventHandler.getFinalDiscount()
+        eventResult = EventResult(totalDiscount = finalDiscount)
+        val checkGiftEvent = CheckEvent(date).checkGiftEvent(totalPrice)
+        if(checkGiftEvent)eventResult = EventResult(getChampagne = true)
         println("할인된 금액")
         println(finalDiscount)
     }
+
+    fun getBadge(){
+        val badgeHandler = BadgeHandler(totalPrice)
+        val badge = badgeHandler.getBadge()
+        eventResult = EventResult(badge= badge)
+    }
+
+
+
+
+
+
+
+
 
 
 
