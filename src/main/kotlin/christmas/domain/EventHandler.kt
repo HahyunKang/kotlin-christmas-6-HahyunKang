@@ -17,11 +17,11 @@ class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice
     }
 
     private fun handleEvent(){
-        if(checkEvent.checkChristmasEvent()) _eventDiscounts.add(EventDiscount(ConstString.CHRISTMASDISCOUNT,ChristmasEventHandler(date).getDiscount()))
-        if(checkEvent.checkWeekDaysEvent())_eventDiscounts.add(EventDiscount(ConstString.WEEKDAYSDISCOUNT, WeekDaysEventHandler(orderMenu).getDiscount()))
-        if(checkEvent.checkWeekendsEvent())_eventDiscounts.add(EventDiscount(ConstString.WEEKENDDISCOUNT,WeekendsEventHandler(orderMenu).getDiscount()))
-        if(checkEvent.checkSpecialEvent())_eventDiscounts.add(EventDiscount(ConstString.SPECIALDISCOUNT,SpecialEventHandler().getDiscount()))
-        if(checkEvent.checkGiftEvent(totalPrice))_eventDiscounts.add(EventDiscount(ConstString.GIFTDISCOUNT,GiftEventHandler().getDiscount()))
+        if(checkEvent.checkChristmasEvent()) _eventDiscounts.add(EventDiscount(ConstString.CHRISTMASDISCOUNT,ChristmasEventHandler(date).getDiscount() * -1))
+        if(checkEvent.checkWeekDaysEvent())_eventDiscounts.add(EventDiscount(ConstString.WEEKDAYSDISCOUNT, WeekDaysEventHandler(orderMenu).getDiscount() * -1))
+        if(checkEvent.checkWeekendsEvent())_eventDiscounts.add(EventDiscount(ConstString.WEEKENDDISCOUNT,WeekendsEventHandler(orderMenu).getDiscount() * -1))
+        if(checkEvent.checkSpecialEvent())_eventDiscounts.add(EventDiscount(ConstString.SPECIALDISCOUNT,SpecialEventHandler().getDiscount() * -1))
+        if(checkEvent.checkGiftEvent(totalPrice))_eventDiscounts.add(EventDiscount(ConstString.GIFTDISCOUNT,GiftEventHandler().getDiscount() * -1))
 
         calculateDiscount()
     }

@@ -14,12 +14,6 @@ enum class Menu(val menuName: String,val price: Int, val category: Category){
     ZeroCola(ConstString.ZEROCOLA,3000,Category.Drink),
     RedWine(ConstString.REDWINE,60000,Category.Drink),
     Champagne(ConstString.CHAMPAGNE,25000,Category.Drink);
-
-    companion object {
-        val menuNames: Array<String> = Menu.values().map { it.menuName }.toTypedArray()
-    }
-
-
 }
 
 enum class Category {

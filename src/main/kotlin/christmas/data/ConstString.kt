@@ -23,6 +23,7 @@ object ConstString {
     const val WEEKENDDISCOUNT ="주말 할인"
     const val SPECIALDISCOUNT= "특별 할인"
     const val GIFTDISCOUNT= "증정 이벤트"
+    const val NONE ="없음"
 
 }
 
@@ -45,6 +46,6 @@ object OUTPUTSTRING {
     const val GIFTMENU = "<증정 메뉴>"
     const val BENEFITLIST = "<혜택 내역>"
     const val TOTALBENEFIT = "<총혜택 금액>"
-    const val PRICEAFTERDISCOUNT = "<할인 후 예상 결제 금액>"
+    const val AMOUNTAFTERDISCOUNT = "<할인 후 예상 결제 금액>"
     const val EVENTBADGE = "<12월 이벤트 배지>"
 }

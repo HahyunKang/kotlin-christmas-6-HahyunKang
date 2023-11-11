@@ -1,6 +1,10 @@
 package christmas.domain
 
+import christmas.data.Badge
+import christmas.data.EventDiscount
 import christmas.data.EventResult
+import christmas.ui.EventScreen
+import net.bytebuddy.dynamic.scaffold.TypeInitializer.None
 
 class EventController {
 
@@ -10,6 +14,9 @@ class EventController {
     private var totalPrice = 0
     private var finalDiscount = 0
     private var eventResult = EventResult()
+    private var eventDiscount = emptyList<EventDiscount>()
+    private var isChampagne = false
+    private var badgeName = Badge.NONE
 
 
 
@@ -19,6 +26,7 @@ class EventController {
         calculatePrice()
         handleEvent()
         getBadge()
+        printOutput()
     }
 
 
@@ -46,9 +54,10 @@ class EventController {
     fun handleEvent(){
         val eventHandler = EventHandler(date,orderMenus,totalPrice)
         finalDiscount = eventHandler.getFinalDiscount()
-        eventResult = EventResult(totalDiscount = finalDiscount)
+      //  eventResult = EventResult(totalDiscount = finalDiscount)
+        eventDiscount = eventHandler.getEachEvenDiscount()
         val checkGiftEvent = CheckEvent(date).checkGiftEvent(totalPrice)
-        if(checkGiftEvent)eventResult = EventResult(getChampagne = true)
+        if(checkGiftEvent)isChampagne =  true
         println("할인된 금액")
         println(finalDiscount)
     }
@@ -56,7 +65,22 @@ class EventController {
     fun getBadge(){
         val badgeHandler = BadgeHandler(totalPrice)
         val badge = badgeHandler.getBadge()
-        eventResult = EventResult(badge= badge)
+        badgeName = badge
+    }
+
+    fun calculateAfterDiscount(){
+
+    }
+
+    fun printOutput(){
+        val eventScreen = EventScreen(date)
+        eventScreen.printOrderedMenu(orderMenus)
+        eventScreen.printTotalPrice(totalPrice)
+        eventScreen.printGiftMenu(isChampagne)
+        eventScreen.printDiscounts(eventDiscount)
+        eventScreen.printTotalDiscount(finalDiscount)
+        eventScreen.printAmountAfterDiscount(totalPrice + finalDiscount)
+        eventScreen.printBadge(badgeName)
     }
 
 
