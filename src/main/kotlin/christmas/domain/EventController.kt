@@ -18,7 +18,7 @@ class EventController {
     private var eventResult = EventResult()
     private var eventDiscount = emptyList<EventDiscount>()
     private var isChampagne = false
-    private var badgeName = Badge.NONE
+    private var badge = Badge.NONE
 
 
 
@@ -28,7 +28,6 @@ class EventController {
         handleMenu()
         calculatePrice()
         handleEvent()
-        getBadge()
         printOutput()
     }
 
@@ -61,15 +60,11 @@ class EventController {
         realDiscount = eventHandler.getRealDiscount()
         val checkGiftEvent = CheckEvent(date).checkGiftEvent(totalPrice)
         if(checkGiftEvent)isChampagne =  true
+        badge = eventHandler.getBadge()
         println("할인된 금액")
         println(finalDiscount)
     }
 
-    fun getBadge(){
-        val badgeHandler = BadgeHandler(totalPrice)
-        val badge = badgeHandler.getBadge()
-        badgeName = badge
-    }
 
 
     fun printOutput(){
@@ -80,7 +75,7 @@ class EventController {
         eventScreen.printDiscounts(eventDiscount)
         eventScreen.printTotalDiscount(finalDiscount)
         eventScreen.printAmountAfterDiscount(totalPrice+realDiscount)
-        eventScreen.printBadge(badgeName)
+        eventScreen.printBadge(badge)
     }
 
 

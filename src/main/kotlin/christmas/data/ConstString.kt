@@ -38,6 +38,7 @@ object CONSTNUM {
     const val TREEBADGECRITERIA = 10000
     const val SANTABADGECRITERIA = 20000
     const val GIFTMENUNUM = 1
+    const val EVENCRITERIA = 10000
 }
 
 object OUTPUTSTRING {

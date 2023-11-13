@@ -3,7 +3,7 @@ package christmas.data
 
 enum class Menu(val menuName: String,val price: Int, val category: Category){
     Soup(ConstString.SOUP,2000,Category.Appetizer),
-    Tapas(ConstString.TAPAS,5000,Category.Appetizer),
+    Tapas(ConstString.TAPAS,5500,Category.Appetizer),
     Salad(ConstString.SALAD,8000,Category.Appetizer),
     TboneStake(ConstString.TBONESTAKE,55000,Category.Main),
     BarbequeLib(ConstString.BARBEQUELIB,54000,Category.Main),

@@ -5,6 +5,10 @@ import christmas.data.CONSTNUM
 class CheckEvent(val date: Int) {
 
 
+    fun checkIsEventApply(totalPrice : Int) : Boolean {
+        return totalPrice >= CONSTNUM.EVENCRITERIA
+    }
+
     fun checkChristmasEvent() : Boolean{
         if(date <= CONSTNUM.CHRISTMAS) return true
 
