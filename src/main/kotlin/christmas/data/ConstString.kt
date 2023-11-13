@@ -37,6 +37,7 @@ object CONSTNUM {
     const val STARTBADGECRITERIA = 5000
     const val TREEBADGECRITERIA = 10000
     const val SANTABADGECRITERIA = 20000
+    const val GIFTMENUNUM = 1
 }
 
 object OUTPUTSTRING {

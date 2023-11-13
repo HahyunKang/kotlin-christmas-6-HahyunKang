@@ -1,6 +1,7 @@
 package christmas.domain
 
 import christmas.data.Badge
+import christmas.data.ConstString
 import christmas.data.EventDiscount
 import christmas.data.EventResult
 import christmas.ui.EventScreen
@@ -13,6 +14,7 @@ class EventController {
     private var orderMenus = listOf<MenuResult>()
     private var totalPrice = 0
     private var finalDiscount = 0
+    private var realDiscount = 0
     private var eventResult = EventResult()
     private var eventDiscount = emptyList<EventDiscount>()
     private var isChampagne = false
@@ -21,6 +23,7 @@ class EventController {
 
 
     init {
+        println(ConstString.FIRST_MESSAGE)
         orderMenu()
         handleMenu()
         calculatePrice()
@@ -54,8 +57,8 @@ class EventController {
     fun handleEvent(){
         val eventHandler = EventHandler(date,orderMenus,totalPrice)
         finalDiscount = eventHandler.getFinalDiscount()
-      //  eventResult = EventResult(totalDiscount = finalDiscount)
         eventDiscount = eventHandler.getEachEvenDiscount()
+        realDiscount = eventHandler.getRealDiscount()
         val checkGiftEvent = CheckEvent(date).checkGiftEvent(totalPrice)
         if(checkGiftEvent)isChampagne =  true
         println("할인된 금액")
@@ -68,9 +71,6 @@ class EventController {
         badgeName = badge
     }
 
-    fun calculateAfterDiscount(){
-
-    }
 
     fun printOutput(){
         val eventScreen = EventScreen(date)
@@ -79,7 +79,7 @@ class EventController {
         eventScreen.printGiftMenu(isChampagne)
         eventScreen.printDiscounts(eventDiscount)
         eventScreen.printTotalDiscount(finalDiscount)
-        eventScreen.printAmountAfterDiscount(totalPrice + finalDiscount)
+        eventScreen.printAmountAfterDiscount(totalPrice+realDiscount)
         eventScreen.printBadge(badgeName)
     }
 

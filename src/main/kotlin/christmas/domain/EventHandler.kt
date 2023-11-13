@@ -8,6 +8,7 @@ class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice
 
     val checkEvent = CheckEvent(date)
     private var _finalDiscount = 0
+    private var _realDiscount = 0
     private var _eventDiscounts = mutableListOf<EventDiscount>()
 
 
@@ -24,6 +25,7 @@ class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice
         if(checkEvent.checkGiftEvent(totalPrice))_eventDiscounts.add(EventDiscount(ConstString.GIFTDISCOUNT,GiftEventHandler().getDiscount() * -1))
 
         calculateDiscount()
+        calculateRealDiscount()
     }
 
     private fun calculateDiscount(){
@@ -33,9 +35,19 @@ class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice
 
     }
 
+    private fun calculateRealDiscount(){
+        _eventDiscounts.forEach {
+           if(it.eventName != ConstString.GIFTDISCOUNT) _realDiscount += it.eventDiscount
+        }
+    }
     fun getFinalDiscount() : Int {
         return  _finalDiscount
     }
+
+    fun getRealDiscount() : Int {
+        return _realDiscount
+    }
+
 
     fun getEachEvenDiscount() : List<EventDiscount> {
         return _eventDiscounts
