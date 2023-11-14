@@ -1,11 +1,7 @@
 package christmas.domain
 
-import christmas.data.Badge
-import christmas.data.ConstString
-import christmas.data.EventDiscount
-import christmas.data.EventResult
+import christmas.data.*
 import christmas.ui.EventScreen
-import net.bytebuddy.dynamic.scaffold.TypeInitializer.None
 
 class EventController {
 
@@ -19,9 +15,7 @@ class EventController {
     private var isChampagne = false
     private var badge = Badge.NONE
 
-
-
-    init {
+    fun startEvent(){
         println(ConstString.FIRST_MESSAGE)
         orderMenu()
         calculatePrice()
@@ -29,23 +23,19 @@ class EventController {
         printOutput()
     }
 
-
-    fun orderMenu(){
+    private fun orderMenu(){
         val customer = Customer()
         date = customer.getVisitDate()
         menu = customer.getMenu()
         orderMenus = customer.getOrderMenus()
     }
 
-
-
-
-    fun calculatePrice(){
+    private fun calculatePrice(){
         val priceCalculator = PriceCalculator(orderMenus)
         totalPrice = priceCalculator.getOrderedPrice()
     }
 
-    fun handleEvent(){
+    private fun handleEvent(){
         val eventHandler = EventHandler(date,orderMenus,totalPrice)
         finalDiscount = eventHandler.getFinalDiscount()
         eventDiscount = eventHandler.getEachEvenDiscount()
@@ -55,9 +45,7 @@ class EventController {
         badge = eventHandler.getBadge()
     }
 
-
-
-    fun printOutput(){
+    private fun printOutput(){
         val eventScreen = EventScreen(date)
         eventScreen.printOrderedMenu(orderMenus)
         eventScreen.printTotalPrice(totalPrice)
@@ -67,15 +55,4 @@ class EventController {
         eventScreen.printAmountAfterDiscount(totalPrice+realDiscount)
         eventScreen.printBadge(badge)
     }
-
-
-
-
-
-
-
-
-
-
-
 }

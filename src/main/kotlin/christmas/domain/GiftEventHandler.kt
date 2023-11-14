@@ -17,8 +17,4 @@ class GiftEventHandler {
         return discount
 
     }
-
-
-
-
 }

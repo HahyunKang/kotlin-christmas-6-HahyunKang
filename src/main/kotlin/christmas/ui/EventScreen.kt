@@ -1,7 +1,7 @@
 package christmas.ui
 
 import christmas.data.*
-import christmas.domain.MenuResult
+import christmas.data.MenuResult
 import java.text.DecimalFormat
 
 class EventScreen(date: Int) {

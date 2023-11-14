@@ -1,4 +1,4 @@
-package christmas.domain
+package christmas.data
 
 import christmas.data.Menu
 

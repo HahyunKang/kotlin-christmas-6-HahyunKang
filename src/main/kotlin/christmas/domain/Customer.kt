@@ -2,8 +2,7 @@ package christmas.domain
 
 import camp.nextstep.edu.missionutils.Console
 import christmas.data.ConstString
-import christmas.util.ErrorMessage
-import christmas.util.InputChecker
+import christmas.data.MenuResult
 
 class Customer {
 
@@ -30,26 +29,17 @@ class Customer {
         }
 
     }
-
-
     private fun inputMenu(){
         println(ConstString.ASK_WHAT_TO_ORDER)
         try {
             val menu = Console.readLine()
-
             _orderMenus= inputValidator.checkInputMenuIsValid(menu)
             inputValidator.menuIsInvalid(_orderMenus)
-
         }catch(e:IllegalArgumentException){
             println(e.message)
             inputMenu()
         }
     }
-
-
-
-
-
 
     fun getVisitDate(): Int{
         return _visitDate
@@ -61,7 +51,5 @@ class Customer {
     fun getOrderMenus() : List<MenuResult>{
         return _orderMenus
     }
-
-
 
 }

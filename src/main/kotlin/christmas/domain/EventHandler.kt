@@ -1,11 +1,8 @@
 package christmas.domain
 
-import christmas.data.Badge
-import christmas.data.ConstString
-import christmas.data.EventDiscount
-import christmas.data.EventResult
+import christmas.data.*
 
-class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice: Int) {
+class EventHandler(val date:Int, val orderMenu : List<MenuResult>, val totalPrice: Int) {
 
     private val checkEvent = CheckEvent(date)
     private var _finalDiscount = 0
@@ -17,9 +14,6 @@ class EventHandler(val date:Int, val orderMenu : List<MenuResult>,val totalPrice
     init {
         if(checkEvent.checkIsEventApply(totalPrice))handleEvent()
     }
-
-
-
 
     private fun handleEvent() {
         if(checkEvent.checkChristmasEvent()) _eventDiscounts.add(EventDiscount(ConstString.CHRISTMASDISCOUNT,ChristmasEventHandler(date).getDiscount() * -1))

@@ -2,6 +2,7 @@ package christmas.domain
 
 import christmas.data.CONSTNUM
 import christmas.data.Category
+import christmas.data.MenuResult
 
 class WeekendsEventHandler(val orderMenu : List<MenuResult>) {
 
@@ -11,7 +12,7 @@ class WeekendsEventHandler(val orderMenu : List<MenuResult>) {
     init {
         calculateDiscount()
     }
-    fun calculateDiscount(){
+    private fun calculateDiscount(){
         orderMenu.forEach {
             if(it.menu.category == Category.Main) discount += CONSTNUM.DOWDISCOUNT
         }

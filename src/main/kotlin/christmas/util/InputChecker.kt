@@ -3,7 +3,7 @@ package christmas.util
 import christmas.data.CONSTNUM
 import christmas.data.Category
 import christmas.data.Menu
-import christmas.domain.MenuResult
+import christmas.data.MenuResult
 
 
 object ErrorMessage {
@@ -78,11 +78,4 @@ object InputChecker {
 
         return CONSTNUM.RETURN_CODE
     }
-
-
-
-
-
-
-
 }

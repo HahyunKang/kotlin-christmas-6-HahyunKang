@@ -1,5 +1,6 @@
 package christmas.domain
 
+import christmas.data.MenuResult
 import christmas.util.ErrorMessage
 import christmas.util.InputChecker
 

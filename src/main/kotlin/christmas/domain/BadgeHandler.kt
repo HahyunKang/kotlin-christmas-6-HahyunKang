@@ -2,7 +2,6 @@ package christmas.domain
 
 import christmas.data.Badge
 import christmas.data.CONSTNUM
-import christmas.data.EventResult
 
 class BadgeHandler(val totalPrice : Int) {
 

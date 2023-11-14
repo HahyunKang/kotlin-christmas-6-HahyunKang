@@ -1,5 +1,7 @@
 package christmas.domain
 
+import christmas.data.MenuResult
+
 class PriceCalculator(val menu : List<MenuResult>) {
 
     private var orderPrice = 0
