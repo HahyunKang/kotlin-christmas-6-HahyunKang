@@ -10,7 +10,7 @@ class Customer {
     private var _visitDate = 0
     private var _menu = ""
     private var _orderMenus = mutableListOf<MenuResult>()
-    private val menuHandler = MenuHandler()
+    private val inputValidator = InputValidator()
 
     init {
         inputDate()
@@ -21,9 +21,9 @@ class Customer {
         println(ConstString.ASK_WHEN_TO_VISIT)
         try {
             val date = Console.readLine()
-            if(InputChecker.checkInputIsInt(date) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(ErrorMessage.SHOW_ERROR_DATE)
+            inputValidator.checkInputDateIsValid(date)
             _visitDate = date.toInt()
-            if(InputChecker.checkDateIs1to31(_visitDate) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(ErrorMessage.SHOW_ERROR_DATE)
+            inputValidator.checkDateIsValid(_visitDate)
         } catch(e:IllegalArgumentException){
             println(e.message)
             inputDate()
@@ -31,12 +31,14 @@ class Customer {
 
     }
 
+
     private fun inputMenu(){
         println(ConstString.ASK_WHAT_TO_ORDER)
         try {
             val menu = Console.readLine()
-            checkInputIsValid(menu)
-            menuIsInvalid()
+
+            _orderMenus= inputValidator.checkInputMenuIsValid(menu)
+            inputValidator.menuIsInvalid(_orderMenus)
 
         }catch(e:IllegalArgumentException){
             println(e.message)
@@ -44,43 +46,8 @@ class Customer {
         }
     }
 
-    private fun checkInputIsValid(menu : String){
-
-        val menuInput = menuHandler.splitInput(menu)
-        menuInput.forEach {
-            if (InputChecker.checkMenuContainDash(it) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-            val menusSplit = it.split("-")
-            if (InputChecker.checkMenuIsValid(menusSplit[0]) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-            val menuName = menuHandler.matchNames(menusSplit[0])
-            if (InputChecker.checkInputIsInt(menusSplit[1]) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-            val menuNum = menusSplit[1].toInt()
-            if (InputChecker.checkNumIsOverZero(menuNum) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-
-            _orderMenus.add(MenuResult(menuName, menuNum))
-        }
 
 
-    }
-    private fun menuIsInvalid(){
-
-            if (InputChecker.checkMenuIsDuplicate(_orderMenus) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-            if (InputChecker.checkMenuIsOnlyDrinks(_orderMenus) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-            if (InputChecker.checkMenuNumsIsOverTwenty(_orderMenus) == ErrorMessage.ERROR_CODE) throw IllegalArgumentException(
-                ErrorMessage.SHOW_ERROR_ORDER
-            )
-        }
 
 
 

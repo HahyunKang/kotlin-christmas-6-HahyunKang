@@ -10,6 +10,9 @@ class MenuHandler() {
         return menu.split(",")
     }
 
+    fun splitMenu(menu : String) : List<String>{
+        return menu.split("-")
+    }
 
      fun matchNames(menuName :  String) : Menu{
         var menu = Menu.Soup
