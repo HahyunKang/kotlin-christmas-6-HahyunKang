@@ -15,7 +15,6 @@ class EventController {
     private var totalPrice = 0
     private var finalDiscount = 0
     private var realDiscount = 0
-    private var eventResult = EventResult()
     private var eventDiscount = emptyList<EventDiscount>()
     private var isChampagne = false
     private var badge = Badge.NONE
@@ -25,7 +24,6 @@ class EventController {
     init {
         println(ConstString.FIRST_MESSAGE)
         orderMenu()
-        handleMenu()
         calculatePrice()
         handleEvent()
         printOutput()
@@ -36,21 +34,15 @@ class EventController {
         val customer = Customer()
         date = customer.getVisitDate()
         menu = customer.getMenu()
+        orderMenus = customer.getOrderMenus()
     }
 
-    fun handleMenu(){
-        val menuHandler = MenuHandler(menu)
-        orderMenus = menuHandler.getOrderMenus()
-        orderMenus.forEach {
-            println("${it.menu.menuName} ${it.orderCount}")
-        }
-    }
+
+
 
     fun calculatePrice(){
         val priceCalculator = PriceCalculator(orderMenus)
         totalPrice = priceCalculator.getOrderedPrice()
-        println("총 주문 금액")
-        println(totalPrice)
     }
 
     fun handleEvent(){
@@ -61,8 +53,6 @@ class EventController {
         val checkGiftEvent = CheckEvent(date).checkGiftEvent(totalPrice)
         if(checkGiftEvent)isChampagne =  true
         badge = eventHandler.getBadge()
-        println("할인된 금액")
-        println(finalDiscount)
     }
 
 
