@@ -2,7 +2,7 @@ package christmas.domain
 
 import christmas.data.CONSTNUM
 
-class CheckEvent(val date: Int) {
+class CheckEvent(private val date: Int) {
 
     private val weekends = listOf(1,2,8,9,15,16,22,23,29,30)
     private val specialDays= listOf(3,10,17,24,25,31)
@@ -16,10 +16,10 @@ class CheckEvent(val date: Int) {
     }
 
     fun checkWeekDaysEvent() : Boolean{
-        return weekends.contains(date)
+        return !weekends.contains(date)
     }
     fun checkWeekendsEvent() : Boolean{
-        return !weekends.contains(date)
+        return weekends.contains(date)
     }
 
     fun checkSpecialEvent() : Boolean{

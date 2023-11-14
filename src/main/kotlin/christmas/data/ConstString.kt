@@ -40,7 +40,7 @@ object CONSTNUM {
     const val GIFTMENUNUM = 1
     const val EVENCRITERIA = 10000
     const val RETURN_CODE = 0
-    const val MENUNUMSCRITERIA = 20000
+    const val MENUNUMSCRITERIA = 20
 
 }
 

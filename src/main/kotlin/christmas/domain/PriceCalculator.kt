@@ -10,7 +10,7 @@ class PriceCalculator(val menu : List<MenuResult>) {
         calculatePrice()
     }
 
-    fun calculatePrice(){
+    private fun calculatePrice(){
         menu.forEach {
             orderPrice += it.menu.price * it.orderCount
         }

@@ -2,7 +2,7 @@ package christmas.domain
 
 import christmas.data.*
 
-class EventHandler(val date:Int, val orderMenu : List<MenuResult>, val totalPrice: Int) {
+class EventHandler(private val date:Int, private val orderMenu : List<MenuResult>, private val totalPrice: Int) {
 
     private val checkEvent = CheckEvent(date)
     private var _finalDiscount = 0

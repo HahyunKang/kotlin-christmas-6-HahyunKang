@@ -4,7 +4,7 @@ import christmas.data.CONSTNUM
 import christmas.data.Category
 import christmas.data.MenuResult
 
-class WeekendsEventHandler(val orderMenu : List<MenuResult>) {
+class WeekendsEventHandler(private val orderMenu : List<MenuResult>) {
 
     private var discount = 0
 
@@ -14,7 +14,7 @@ class WeekendsEventHandler(val orderMenu : List<MenuResult>) {
     }
     private fun calculateDiscount(){
         orderMenu.forEach {
-            if(it.menu.category == Category.Main) discount += CONSTNUM.DOWDISCOUNT
+            if(it.menu.category == Category.Main) discount += CONSTNUM.DOWDISCOUNT * it.orderCount
         }
     }
 
